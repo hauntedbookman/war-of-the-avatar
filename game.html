@@ -202,7 +202,6 @@
                 },
                 describe:()=>{
                     IO.Response.say(Game.Player.location.baseDescription);
-                    IO.Response.skipLine(); 
                 },
 
                 initialize:()=>{
@@ -257,18 +256,19 @@
                     pv["score"] = 0;
                 },
                 move:(direction)=>{
-                    IO.Response.say(`Go ${ Game.Map.getDirectionName(direction) }.`);
                     IO.Response.say("<br>"); 
+                    IO.Response.say(`Go ${ Game.Map.getDirectionName(direction) }.`);
 
                     let nextRoom = Game.Map[Game.Player.location.name].doorways[direction];
                     if (!nextRoom) {
                         IO.Response.say("Can't go that way.");
-                        IO.Response.say("<br>"); 
                         return;
                     }
+
+                    IO.Response.say(""); 
                     Game.Player.location = Game.Map[nextRoom];
                     Game.Map.describe();
-                }
+x                }
             },
         };
 
@@ -304,11 +304,11 @@
                         let msgEl = dom.createElement("div");
                         msgEl.className="message";
                         msgEl.innerHTML = msg;
-                        msgEl.style.bottom = `${25 * (parseInt(index) + 1)}px`;
+                        msgEl.style.bottom = `${30 * (parseInt(index) + 1)}px`;
                         return msgEl;
                     }
                     IO.Response["queue"] = IO.Response["queue"] || [];
-                    if (IO.Response.queue.length >= 23) IO.Response.queue.shift();
+                    if (IO.Response.queue.length >= 21) IO.Response.queue.shift();
                     IO.Response.queue.push(message);
                     let count=1;
                     for(var i = IO.Response.queue.length - 1; i >= 0; i--){
