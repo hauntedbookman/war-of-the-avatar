@@ -10,26 +10,30 @@
 
             body {
                 background-color: rgb(59, 57, 57);
-                font-family: DotMatrix;
-                font-size: 21pt;
-                color: rgb(126, 242, 63);
             }
             #game-window{
-                width: 800px;
+                width: 880px;
                 height: 700px;
                 background-color: black;
                 margin: 0 auto;
                 margin-top: 30px;
+                font-family: DotMatrix;
+                font-size: 28pt;
+                color: rgb(126, 242, 63);
+                overflow-y: hidden;
+                overflow-x: hidden;
             }
+
             #content{
                 position: relative;
-                width: 96%;
+                width: 98%;
                 height: 675px;
                 border: 0px solid white;
                 border-radius: 5px;
                 margin: auto;
                 top: 10px;
             }
+
             #command-line{
                 position: relative;
                 width: 95%;
@@ -41,6 +45,13 @@
                 top: -40px;
             }
             #prompt{
+                position: absolute;
+                display: inline;
+                left: -15px;
+                bottom: 15px;
+                padding-right: 20px;
+            }
+            #cursor{
                 position: relative;
                 float: left;
                 width: 20px;
@@ -74,8 +85,9 @@
     <div id="game-window">
         <div id="content"></div>
         <div id="command-line">
+            <span id="prompt">></span>
             <span style="display:inline-block; letter-spacing: 1px;" id="text-element"></span>
-            <div id="prompt">_</div>
+            <div id="cursor">_</div>
         </div>
     </div>
 </html>
@@ -89,7 +101,7 @@
         let gameWindow = dom.getElementById('game-window');
         let contentElement = dom.getElementById('content');
         let commandLineElement = dom.getElementById('command-line');
-        let promptElement = dom.getElementById('prompt');
+        let cursorElement = dom.getElementById('cursor');
         let textElement = dom.getElementById('text-element');
 
         const Game = {
@@ -344,7 +356,7 @@ x                }
                         let msgEl = dom.createElement("div");
                         msgEl.className="message";
                         msgEl.innerHTML = msg;
-                        msgEl.style.bottom = `${30 * (parseInt(index) + 1)}px`;
+                        msgEl.style.bottom = `${60 * (parseInt(index) + 1)}px`;
                         return msgEl;
                     }
                     IO.Response["queue"] = IO.Response["queue"] || [];
@@ -425,14 +437,14 @@ x                }
                 
                 killPrompt: ()=>{
                     clearInterval(IO.Prompt["intervalId"]);
-                    promptElement.style.visibility = "hidden";
+                    cursorElement.style.visibility = "hidden";
                 },
 
                 flashPrompt: ()=>{
                     if (IO.Prompt.intervalId) clearInterval(IO.Prompt.intervalId);
                     IO.Prompt["intervalId"] = setInterval(()=>{
                         IO.Prompt["state"] = !IO.Prompt["state"];
-                        promptElement.style.visibility = IO.Prompt["state"] ? "visible" : "hidden";                   
+                        cursorElement.style.visibility = IO.Prompt["state"] ? "visible" : "hidden";                   
                     }, 175);
                 },
             }
