@@ -108,6 +108,7 @@
                     IO.TextMode.off();
                     IO.Response.attachImage("wota-title.6", gameWindow);
                 },
+
                 runCommand: async (command)=>{
                     if (command.length == 0) return;
                     switch (`${command.toLowerCase()}`) {
@@ -124,7 +125,46 @@
                             Game.Player.move(Game.Map.Constants.Directions.South);
                             break;
 
+                        case "e":
+                        case "east":
+                        case "go east":
+                            Game.Player.move(Game.Map.Constants.Directions.East);
+                            break;
 
+                        case "w":
+                        case "west":
+                        case "go wast":
+                            Game.Player.move(Game.Map.Constants.Directions.West);
+                            break;
+
+                        case "nw":
+                        case "northwest":
+                        case "go northwest":
+                            Game.Player.move(Game.Map.Constants.Directions.NorthWest);
+                            break;
+
+                        case "sw":
+                        case "southwest":
+                        case "go southwest":
+                            Game.Player.move(Game.Map.Constants.Directions.SouthWest);
+                            break;
+
+
+                        case "ne":
+                        case "northeast":
+                        case "go northeast":
+                            Game.Player.move(Game.Map.Constants.Directions.NorthEast);
+                            break;
+
+
+                        case "se":
+                        case "southeast":
+                        case "go southeast":
+                            Game.Player.move(Game.Map.Constants.Directions.SouthEast);
+                            break;
+
+
+                        case "l":
                         case "look":
                             Game.Map.describe();
                             break;
