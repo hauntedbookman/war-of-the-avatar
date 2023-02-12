@@ -21,12 +21,12 @@ body {
 
 #content{
     position: relative;
-    width: 8%;
+    width: 98%;
     height: 675px;
-    border: 0px solid white;
     border-radius: 5px;
     margin: auto;
     top: 10px;
+    border:0px solid white;
 }
 
 #command-line{
