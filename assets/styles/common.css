@@ -6,6 +6,7 @@
 body {
     background-color: rgb(59, 57, 57);
 }
+
 #game-window{
     width: 880px;
     height: 700px;
@@ -13,7 +14,7 @@ body {
     margin: 0 auto;
     margin-top: 30px;
     font-family: DotMatrix;
-    font-size: 28pt;
+    font-size: 22pt;
     color: rgb(126, 242, 63);
     overflow-y: hidden;
     overflow-x: hidden;
@@ -39,13 +40,15 @@ body {
     border-radius: 5px;
     top: -40px;
 }
+
 #prompt{
     position: absolute;
     display: inline;
     left: -15px;
-    bottom: 15px;
+    bottom: 20px;
     padding-right: 20px;
 }
+
 #cursor{
     position: relative;
     float: left;
@@ -55,6 +58,7 @@ body {
     background-color: transparent;
     visibility: visible;
 }
+
 #text-element{
     margin-top:2px;
     padding: 2px;
@@ -62,6 +66,7 @@ body {
     float: left;
     max-width: 96%;
 }
+
 .message{
     display: block;
     position: absolute;
@@ -69,6 +74,7 @@ body {
     padding: 0;
     border-spacing: 0;
 }
+
 .game-image {
     position: relative;
     width:100%;
